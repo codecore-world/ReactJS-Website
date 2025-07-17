@@ -1,0 +1,85 @@
+.home {
+  min-height: 100vh;
+  background: #000000;
+  color: #ffffff;
+  font-family: 'IBM Plex Mono', monospace;
+  position: relative;
+  overflow: hidden;
+}
+
+.canvas-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1;
+}
+
+.background-canvas {
+  width: 100%;
+  height: 100%;
+}
+
+.text-overlay {
+  position: absolute;
+  bottom: 4rem;
+  right: 2rem;
+  z-index: 10;
+  pointer-events: none;
+  text-align: right;
+}
+
+.page-title {
+  font-size: 4.5rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  margin: 0;
+  pointer-events: auto;
+}
+
+.text-gradient {
+  background: linear-gradient(135deg, #ed96b8 0%, #ff6b9d 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-world {
+  color: #ffffff;
+  font-weight: 300;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .page-title {
+    font-size: 3.5rem;
+  }
+  
+  .text-overlay {
+    bottom: 3rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .text-overlay {
+    bottom: 2rem;
+    right: 1.5rem;
+  }
+  
+  .page-title {
+    font-size: 2.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .text-overlay {
+    bottom: 1.5rem;
+    right: 1rem;
+  }
+  
+  .page-title {
+    font-size: 2rem;
+  }
+} 

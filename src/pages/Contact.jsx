@@ -96,7 +96,7 @@ const Contact = () => {
             transition={{ duration: 0.8, delay: 0.4 }}
           >
             Ready to start your next project? Have questions about our services? 
-            We'd love to hear from you. Let's create something amazing together.
+            We'd love to hear from you. Contact us right here :
           </motion.p>
         </motion.section>
 
@@ -271,7 +271,7 @@ const Contact = () => {
               transition={{ duration: 0.5, delay: 2.2 }}
             >
               <h3>What services do you offer?</h3>
-              <p>We specialize in software development, AI solutions, 3D rendering, and cybersecurity tools. Our team creates custom solutions for various industries.</p>
+              <p>We specialize in web development, however, we are still working on all our softwares with love</p>
             </motion.div>
             
             <motion.div
@@ -292,16 +292,6 @@ const Contact = () => {
             >
               <h3>Do you work with clients globally?</h3>
               <p>Yes! Our team is distributed globally and we work with clients from all around the world. We're available 24/7 for support.</p>
-            </motion.div>
-            
-            <motion.div
-              className="faq-item"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 2.8 }}
-            >
-              <h3>What technologies do you use?</h3>
-              <p>We use modern technologies including React, Node.js, Python, Three.js, AI frameworks, and cloud platforms like AWS and Azure.</p>
             </motion.div>
           </div>
         </motion.section>

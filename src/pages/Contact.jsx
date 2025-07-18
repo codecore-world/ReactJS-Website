@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { motion } from 'framer-motion'
 import { Github, MessageCircle, Mail, MapPin, Phone, Send, ExternalLink } from 'lucide-react'
+import Silk from '../components/Silk'
 import './Contact.css'
 
 const Contact = () => {
@@ -61,6 +62,17 @@ const Contact = () => {
 
   return (
     <div className="contact">
+      {/* Full Background Silk */}
+      <div className="canvas-container">
+        <Silk
+          speed={5}
+          scale={1}
+          color="#ed96b8"
+          noiseIntensity={1.5}
+          rotation={0}
+        />
+      </div>
+      
       <div className="container">
         <motion.section
           className="contact-hero"

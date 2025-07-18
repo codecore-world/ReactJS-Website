@@ -1,62 +1,63 @@
 import React, { useState, useEffect } from 'react'
-import { Routes, Route, useLocation } from 'react-router-dom'
+import { Routes, Route, useLocation, useNavigate } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
-import Navbar from './components/Navbar'
 import Home from './pages/Home'
 import Contact from './pages/Contact'
+import LoadingScreen from './components/LoadingScreen'
+import GooeyNav from './components/GooeyNav'
+import ElasticSlider from './components/ElasticSlider'
+import { VolumeX, Volume2 } from 'lucide-react'
 import './App.css'
+
+const NAV_ITEMS = [
+  { label: '', href: '/', icon: <img src="/home.png" alt="Home" style={{ width: 24, height: 24, display: 'block' }} /> },
+  { label: '', href: '/contact', icon: <img src="/contact.png" alt="Contact" style={{ width: 24, height: 24, display: 'block' }} /> }
+]
 
 function App() {
   const [isLoading, setIsLoading] = useState(true)
   const location = useLocation()
+  const navigate = useNavigate()
 
   useEffect(() => {
-    // Simulate loading time for smooth animations
-    const timer = setTimeout(() => {
-      setIsLoading(false)
-    }, 1500)
-
-    return () => clearTimeout(timer)
-  }, [])
+    if (!isLoading) return;
+    // Le composant LoadingScreen appelle onFinish quand l'animation est finie
+  }, [isLoading])
 
   if (isLoading) {
-    return (
-      <motion.div
-        className="loading-screen"
-        initial={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
-        transition={{ duration: 0.5 }}
-      >
-        <div className="loading-content">
-          <motion.div
-            className="logo-container"
-            animate={{ rotate: 360 }}
-            transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
-          >
-            <img src="/logo.png" alt="CODECORE" className="loading-logo" />
-          </motion.div>
-          <motion.h1
-            className="loading-text"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.5, duration: 0.8 }}
-          >
-            CODECORE.world
-          </motion.h1>
-          <motion.div
-            className="loading-bar"
-            initial={{ width: 0 }}
-            animate={{ width: "100%" }}
-            transition={{ delay: 0.8, duration: 0.7 }}
-          />
-        </div>
-      </motion.div>
-    )
+    return <LoadingScreen onFinish={() => setIsLoading(false)} />
   }
+
+  // Gestion du clic sur la nav Gooey pour router
+  const handleNavClick = (e, index) => {
+    e.preventDefault();
+    navigate(NAV_ITEMS[index].href);
+  };
 
   return (
     <div className="App">
-      <Navbar />
+      <GooeyNav
+        items={NAV_ITEMS.map((item, idx) => ({
+          ...item,
+          onClick: (e) => handleNavClick(e, idx)
+        }))}
+        particleCount={15}
+        particleDistances={[90, 10]}
+        particleR={100}
+        initialActiveIndex={NAV_ITEMS.findIndex(item => item.href === location.pathname)}
+        animationTime={600}
+        timeVariance={300}
+        colors={[1, 2, 3, 1, 2, 3, 1, 4]}
+      />
+      
+      <ElasticSlider
+        leftIcon={null}
+        rightIcon={null}
+        startingValue={0}
+        defaultValue={30}
+        maxValue={100}
+      />
+      
       <AnimatePresence mode="wait">
         <motion.div
           key={location.pathname}

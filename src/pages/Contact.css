@@ -1,17 +1,41 @@
 .contact {
-  padding-top: 100px;
   min-height: 100vh;
-  background: var(--primary-black);
+  background: #000000;
+  color: #ffffff;
+  font-family: 'IBM Plex Mono', monospace;
+  position: relative;
+  overflow: hidden;
+}
+
+.canvas-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 120px 20px 0 20px;
+  position: relative;
+  z-index: 10;
 }
 
 .contact-hero {
   text-align: center;
   margin-bottom: 80px;
+  position: relative;
+  z-index: 10;
 }
 
 /* Contact Content */
 .contact-content {
   margin-bottom: 80px;
+  position: relative;
+  z-index: 10;
 }
 
 .contact-grid {
